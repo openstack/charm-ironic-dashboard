@@ -1,0 +1,16 @@
+/build/
+
+bin
+.coverage
+.testrepository
+.tox
+tags
+*.sw[nop]
+*.pyc
+.unit-state.db
+trusty/
+xenial/
+.stestr
+__pycache__
+func-results.json
+*.charm

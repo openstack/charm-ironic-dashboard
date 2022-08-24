@@ -1,0 +1,24 @@
+charm_name: ironic-dashboard
+smoke_bundles:
+- focal-xena
+
+gate_bundles:
+- focal-xena
+- impish-xena
+
+dev_bundles:
+- focal-yoga
+- jammy-yoga
+
+target_deploy_status: {}
+
+configure:
+- zaza.charm_tests.noop.setup.basic_setup
+
+tests:
+- zaza.charm_tests.noop.tests.NoopTest
+
+tests_options:
+  force_deploy:
+    - impish-xena
+    - jammy-yoga
