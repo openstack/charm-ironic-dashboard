@@ -1,1 +1,26 @@
-src/metadata.yaml
+# Copyright 2022 Canonical Ltd.
+# See LICENSE file for licensing details
+
+name: ironic-dashboard
+display-name: Ironic Dashboard
+summary: Horizon plugin for Ironic Bare Metal services
+maintainers:
+  - OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+description: |
+  The Ironic Dashboard provides the plugin necessary to
+  manage bare metal instances from the Horizon Dashboard.
+tags:
+- openstack
+
+series:
+- focal
+- jammy
+
+# This charm is a machine charm which is intended to be inside
+# the same container/machine as the openstack-dashboard.
+subordinate: true
+
+requires:
+  dashboard:
+    interface: dashboard-plugin
+    scope: container
