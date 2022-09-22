@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""# Horizon Plugin library.
+"""# Horizon Dashboard Plugin library.
 
 This library facilitates interactions with the 'classic' OpenStack Dashboard
 Machine Charm. This library is used to provide configuration and dependent
@@ -37,7 +37,8 @@ class from this library. The simplest scenario is to just instantiate the
 `HorizonPlugin` object and provide the set of debian packages which should be
 installed, as below:
 
-    from charms.openstack.v0.horizon_plugin import HorizonPlugin
+    from charms.openstack_libs.v0.dashboard_plugin_requires \
+        import HorizonPlugin
 
     class AwesomeHorizonPluginFoo(CharmBase):
         def __init__(self, *args):
@@ -57,7 +58,7 @@ installed to. The plugin charm can access these values as attributes on the
 `HorizonPlugin` object.
 
     ...
-    logger.debug(f'Current release is {self.plugin.release}
+    logger.debug(f'Current release is {self.plugin.release}')
     ...
 
 Note, these values are only returned when the relation between plugin charm
@@ -66,20 +67,14 @@ principal charm.
 """
 import json
 import logging
-
 from typing import List, Optional
 
 import ops.charm
-from ops.framework import (
-    EventBase,
-    EventSource,
-    Object,
-    ObjectEvents,
-)
+from ops.framework import EventBase, EventSource, Object, ObjectEvents
 from ops.model import Relation
 
 # The unique Charmhub library identifier, never change it
-LIBID = "TBD"
+LIBID = "9317847810c341a1ad80895b5d206b85"
 
 # Increment this major API version when introducing breaking changes
 LIBAPI = 0
@@ -93,6 +88,7 @@ logger = logging.getLogger(__name__)
 
 class HorizonConnectedEvent(EventBase):
     """Raised when the OpenStack Horizon Dashboard is connected."""
+
     pass
 
 
@@ -102,6 +98,7 @@ class HorizonAvailableEvent(EventBase):
 
 class HorizonGoneAwayEvent(EventBase):
     """Raised when the OpenStack Horizon Dashboard is no longer available."""
+
     pass
 
 
@@ -124,12 +121,15 @@ class HorizonPlugin(Object):
 
     on = HorizonEvents()
 
-    def __init__(self, charm: ops.charm.CharmBase,
-                 relation_name: str = 'dashboard',
-                 install_packages: List[str] = None,
-                 conflicting_packages: Optional[List[str]] = None,
-                 local_settings: str = "",
-                 priority: str = None,):
+    def __init__(
+        self,
+        charm: ops.charm.CharmBase,
+        relation_name: str = "dashboard",
+        install_packages: List[str] = None,
+        conflicting_packages: Optional[List[str]] = None,
+        local_settings: str = "",
+        priority: str = None,
+    ):
         super().__init__(charm, relation_name)
         self.charm = charm
         self.relation_name = relation_name
@@ -161,7 +161,7 @@ class HorizonPlugin(Object):
         :type event: EventBase
         :return: None
         """
-        logging.debug(f'{self.relation_name} relation has joined')
+        logging.debug(f"{self.relation_name} relation has joined")
         self.publish_plugin_info(
             self.local_settings,
             self.priority,
@@ -177,7 +177,7 @@ class HorizonPlugin(Object):
         When the dashboard relation changes, it may be indicating that there's
         a new OpenStack release or that some other element has changed.
         """
-        logging.debug(f'{self.relation_name} relation has changed')
+        logging.debug(f"{self.relation_name} relation has changed")
         self.on.available.emit()
 
     def _on_dashboard_relation_broken(self, event: EventBase):
@@ -190,7 +190,7 @@ class HorizonPlugin(Object):
         :type event: EventBase
         return: None
         """
-        logging.debug(f'{self.relation_name} relation has departed')
+        logging.debug(f"{self.relation_name} relation has departed")
         self.on.goneaway.emit()
 
     @property
@@ -199,12 +199,12 @@ class HorizonPlugin(Object):
         return self.framework.model.get_relation(self.relation_name)
 
     def publish_plugin_info(
-            self,
-            local_settings: str,
-            priority: str,
-            install_packages: Optional[List[str]] = None,
-            conflicting_packages: Optional[List[str]] = None,
-            relation: Optional[Relation] = None,
+        self,
+        local_settings: str,
+        priority: str,
+        install_packages: Optional[List[str]] = None,
+        conflicting_packages: Optional[List[str]] = None,
+        relation: Optional[Relation] = None,
     ) -> None:
         """Publish information regarding the plugin to the provider.
 
@@ -235,13 +235,13 @@ class HorizonPlugin(Object):
             return
 
         data = rel.data[self.charm.unit]
-        data['local-settings'] = local_settings
+        data["local-settings"] = local_settings
         if priority:
-            data['priority'] = priority
+            data["priority"] = priority
         if install_packages:
-            data['install-packages'] = json.dumps(install_packages)
+            data["install-packages"] = json.dumps(install_packages)
         if conflicting_packages:
-            data['conflicting-packages'] = json.dumps(conflicting_packages)
+            data["conflicting-packages"] = json.dumps(conflicting_packages)
 
         rel.data[self.charm.unit].update(data)
 
@@ -269,23 +269,25 @@ class HorizonPlugin(Object):
 
     @property
     def openstack_dir(self) -> Optional[str]:
-        """Retrieves the openstack_dir property from the principal charm
+        """Retrieves the openstack_dir property from the principal charm.
 
         :return: openstack_dir property from principal charm
         :rtype: Optional[str]
         """
-        return self._get_remote_data('openstack_dir')
+        return self._get_remote_data("openstack_dir")
 
     @property
     def bin_path(self) -> Optional[str]:
-        """Retrives the bin_path property from the principal charm
+        """Retrieves the bin_path property from the principal charm.
 
-        :return: bin_path property from the principal charm"""
-        return self._get_remote_data('bin_path')
+        :return: bin_path property from the principal charm
+        """
+        return self._get_remote_data("bin_path")
 
     @property
     def release(self) -> Optional[str]:
-        """Retrives the release property from the principal charm
+        """Retrieves the release property from the principal charm.
 
-        :return: release property from the principal charm"""
-        return self._get_remote_data('release')
+        :return: release property from the principal charm
+        """
+        return self._get_remote_data("release")

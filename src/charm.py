@@ -23,7 +23,7 @@ from ops.charm import CharmBase
 from ops.main import main
 from ops.model import ActiveStatus
 
-from charms.openstack.v0.horizon_plugin import (
+from charms.openstack_libs.v0.dashboard_plugin_requires import (
     HorizonPlugin,
     HorizonAvailableEvent,
 )
