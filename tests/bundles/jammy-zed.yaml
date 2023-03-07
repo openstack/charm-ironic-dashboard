@@ -80,7 +80,7 @@ applications:
     channel: latest/edge
 
   ironic-dashboard:
-    charm: ../../../ironic-dashboard.charm
+    charm: ../../ironic-dashboard.charm
 
 relations:
 

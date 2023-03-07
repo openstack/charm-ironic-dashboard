@@ -1,14 +1,14 @@
 charm_name: ironic-dashboard
 smoke_bundles:
-- focal-xena
+- jammy-antelope
 
 gate_bundles:
-- focal-xena
-- impish-xena
+- jammy-zed
+- jammy-antelope
+- lunar-antelope
 
 dev_bundles:
-- focal-yoga
-- jammy-yoga
+- jammy-antelope
 
 target_deploy_status: {}
 
@@ -20,5 +20,4 @@ tests:
 
 tests_options:
   force_deploy:
-    - impish-xena
-    - jammy-yoga
+    - lunar-antelope
