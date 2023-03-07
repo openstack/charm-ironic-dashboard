@@ -1,14 +1,13 @@
 charm_name: ironic-dashboard
 smoke_bundles:
-- jammy-antelope
+- focal-victoria
 
 gate_bundles:
-- jammy-zed
-- jammy-antelope
-- lunar-antelope
+- focal-victoria
+- focal-ussuri
 
 dev_bundles:
-- jammy-antelope
+- focal-victoria
 
 target_deploy_status: {}
 
@@ -19,5 +18,4 @@ tests:
 - zaza.charm_tests.noop.tests.NoopTest
 
 tests_options:
-  force_deploy:
-    - lunar-antelope
+  force_deploy: []
