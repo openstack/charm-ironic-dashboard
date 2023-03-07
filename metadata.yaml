@@ -14,7 +14,6 @@ tags:
 
 series:
 - focal
-- jammy
 
 # This charm is a machine charm which is intended to be inside
 # the same container/machine as the openstack-dashboard.
