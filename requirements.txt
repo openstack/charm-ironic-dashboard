@@ -4,4 +4,4 @@
 #     https://github.com/openstack-charmers/release-tools
 #
 
-ops
+ops<2.2

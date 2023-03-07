@@ -1,7 +1,7 @@
 - project:
     templates:
-      - charm-unit-jobs
-      - charm-functional-jobs
+      - charm-yoga-unit-jobs
+      - charm-yoga-functional-jobs
     vars:
       needs_charm_build: true
       charm_build_name: ironic-dashboard
