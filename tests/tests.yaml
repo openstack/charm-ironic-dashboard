@@ -1,14 +1,17 @@
 charm_name: ironic-dashboard
 smoke_bundles:
 - jammy-antelope
+- jammy-bobcat
 
 gate_bundles:
-- jammy-zed
 - jammy-antelope
+- jammy-bobcat
 - lunar-antelope
+- mantic-bobcat
 
 dev_bundles:
 - jammy-antelope
+- jammy-bobcat
 
 target_deploy_status: {}
 
@@ -21,3 +24,4 @@ tests:
 tests_options:
   force_deploy:
     - lunar-antelope
+    - mantic-bobcat

@@ -15,6 +15,7 @@ tags:
 series:
 - focal
 - jammy
+- mantic
 
 # This charm is a machine charm which is intended to be inside
 # the same container/machine as the openstack-dashboard.
