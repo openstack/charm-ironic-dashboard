@@ -6,7 +6,6 @@ smoke_bundles:
 gate_bundles:
 - jammy-antelope
 - jammy-bobcat
-- lunar-antelope
 - mantic-bobcat
 
 dev_bundles:
@@ -23,5 +22,4 @@ tests:
 
 tests_options:
   force_deploy:
-    - lunar-antelope
     - mantic-bobcat
