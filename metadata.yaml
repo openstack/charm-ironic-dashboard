@@ -10,15 +10,11 @@ description: |
   The Ironic Dashboard provides the plugin necessary to
   manage bare metal instances from the Horizon Dashboard.
 tags:
-- openstack
+  - openstack
 
 series:
-- focal
-- jammy
-- mantic
-
-# This charm is a machine charm which is intended to be inside
-# the same container/machine as the openstack-dashboard.
+  - focal
+  - jammy
 subordinate: true
 
 requires:

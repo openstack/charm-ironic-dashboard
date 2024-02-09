@@ -59,7 +59,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '4'
-    channel: latest/edge
+    channel: 2024.1/edge
 
   ironic-api:
     charm: ch:ironic-api
@@ -68,7 +68,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '5'
-    channel: latest/edge
+    channel: 2024.1/edge
 
   openstack-dashboard:
     charm: ch:openstack-dashboard
@@ -77,7 +77,7 @@ applications:
       openstack-origin: *openstack-origin
     to:
       - '6'
-    channel: latest/edge
+    channel: 2024.1/edge
 
   ironic-dashboard:
     charm: ../../ironic-dashboard.charm
