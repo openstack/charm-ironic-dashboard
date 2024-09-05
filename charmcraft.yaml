@@ -1,11 +1,28 @@
 type: "charm"
-bases:
-  - build-on:
-      - name: "ubuntu"
-        channel: "22.04"
-        architectures:
-          - amd64
-    run-on:
-      - name: "ubuntu"
-        channel: "22.04"
-        architectures: [amd64, s390x, ppc64el, arm64]
+
+parts:
+  charm:
+    source: src/
+    plugin: charm
+    build-packages:
+      - libpython3-dev
+    build-snaps:
+      - charm/latest/edge
+    build-environment:
+      - CHARM_INTERFACES_DIR: /root/project/interfaces
+      - CHARM_LAYERS_DIR: /root/project/layers
+
+base: ubuntu@24.04
+platforms:
+ amd64:
+   build-on: amd64
+   build-for: amd64
+ arm64:
+   build-on: arm64
+   build-for: arm64
+ ppc64el:
+   build-on: ppc64el
+   build-for: ppc64el
+ s390x:
+   build-on: s390x
+   build-for: s390x

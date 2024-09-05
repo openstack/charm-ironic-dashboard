@@ -11,10 +11,6 @@ description: |
   manage bare metal instances from the Horizon Dashboard.
 tags:
   - openstack
-
-series:
-  - focal
-  - jammy
 subordinate: true
 
 requires:
