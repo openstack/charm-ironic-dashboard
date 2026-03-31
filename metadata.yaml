@@ -5,16 +5,17 @@ name: ironic-dashboard
 display-name: Ironic Dashboard
 summary: Horizon plugin for Ironic Bare Metal services
 maintainers:
-  - OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
+- OpenStack Charmers <openstack-charmers@lists.ubuntu.com>
 description: |
   The Ironic Dashboard provides the plugin necessary to
   manage bare metal instances from the Horizon Dashboard.
 tags:
-  - openstack
+- openstack
 
 series:
-  - focal
-  - jammy
+- focal
+- jammy
+- noble
 subordinate: true
 
 requires:
